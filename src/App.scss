@@ -1,0 +1,220 @@
+$pass: '-pass';
+$miss: '-miss';
+@mixin btn {
+  width: 200px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: #0af;
+  color: #fff;
+  cursor: pointer;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%;
+}
+.title {
+  width: 100%;
+  text-align: center;
+  & > h1 {
+    padding: 1.5rem 0 0;
+  }
+}
+
+// englishText -------------------//
+
+.checkBg {
+  &#{$pass} {
+    color: #66BB6A;
+  }
+  &#{$miss} {
+    color: #EC407A;
+  }
+  &#{$pass}::after,
+  &#{$miss}::after {
+    content: '';
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #faa;
+  }
+}
+
+.englishText {
+  width: 70vw;
+  height: auto;
+  padding: 1em;
+  margin: 2rem auto 1rem;
+  border: 1px solid #777;
+  border-radius: 1em;
+  background-color: #fff;
+  user-select: none;
+  & > span {
+    font-size: 1.7em;
+    line-height: 1.5;
+    position: relative;
+  }
+}
+
+
+
+// englishInput -------------------//
+
+.englishInput {
+  position: relative;
+  width: 70%;
+  margin: auto;
+  margin-bottom: 3rem;
+  &::before {
+    content: '';
+    width: 0;
+    height: 3px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #fa0;
+    animation: inputAnimation 1s 1 linear forwards;
+  }
+  & > input {
+    width: 100%;
+    margin: auto;
+    padding: .3em .5em;
+    border: none;
+    border-bottom: 3px solid #333;
+    outline: none;
+    font-size: 26px;
+  }
+// inputDisplay
+}
+
+// displayTimer, startTimer
+.startTimer,
+.displayTimer {
+  font-size: 2em;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #333;
+  color: #fff;
+  padding: .5em .7em;
+  position: fixed;
+  bottom: 1.2rem;
+  left: 1rem;
+}
+
+
+// timer
+
+.timer-group {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem;
+  & > button {
+    @include btn;
+  }
+  & > button:not(:last-child) {
+   margin-right: 30px; 
+  }
+}
+
+
+.inputLastDisplay {
+  width: 100px;
+  height: 100px;
+  padding: 1rem 0;
+  font-size: 3em;
+  line-height: 0.8em;
+  border-radius: 10px;
+  background-color: #333;
+  color: #fa0;
+  text-align: center;
+  position: absolute;
+  bottom: 5rem;
+  right: 2rem;
+}
+
+// complete
+.complete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: transparent;
+  pointer-events: none;
+  //animation: completeAnimation 1s ease-in-out 1 forwards;
+  & > .popup {
+    width: 500px;
+    height: 140px;
+    margin: auto;
+    background-color: #333;
+    border-radius: 8px;
+    text-align: center;
+    color: #fa0;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 140px;
+    transform: scale(0);
+    animation: popupAnimation 0.5s ease-in-out 1 forwards;
+  }
+}
+
+.reset {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.reset-btn {
+  @include btn;
+}
+
+// footer
+footer {
+  width: 100%;
+  padding: 1rem 0;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+}
+@keyframes completeAnimation {
+  0% {
+    //opacity: 0;
+    background-color: rgba($color: #000000, $alpha: 0);
+  }
+  100% {
+    //opacity: 1;
+    background-color: rgba($color: #000000, $alpha: 0.7);
+  }
+}
+@keyframes popupAnimation {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes inputAnimation {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
