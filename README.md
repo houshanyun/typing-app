@@ -1,1 +1,1 @@
-## Typii::
+## Typing-app
