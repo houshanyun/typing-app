@@ -5,13 +5,13 @@ type textType = {
 }
 const EnglishText: React.FC<textType> = ({ textRef }) => {
   return (
-      <>
-        <div className="englishText" ref={textRef}>
-          {ENTEXT.map((word: string, index: number) => (
-            <span key={`${word}-${index}`}>{word}</span>
-          ))}
-        </div>
-      </>
+    <>
+      <div className="englishText" ref={textRef}>
+        {ENTEXT.map((word: string, index: number) => (
+          <span key={`${word}-${index}`}>{word}</span>
+        ))}
+      </div>
+    </>
   )
 }
 

@@ -1,7 +1,9 @@
-import React from "react"
+import React from 'react'
+
 type inputLast = {
-    typing: string | undefined
+  typing: string | undefined
 }
+
 const InputLastDisplay: React.FC<inputLast> = ({ typing }) => {
   return (
     <>

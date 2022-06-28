@@ -2,8 +2,8 @@ import React, { useState, useRef } from 'react'
 import Button from './components/Button'
 import EnglishInput from './components/EnglishInput'
 import EnglishText from './components/EnglishText'
-import './App.scss'
 import InputLastDisplay from './components/InputLastDisplay'
+import './App.scss'
 
 const App: React.FC = () => {
   const [typing, setTyping] = useState<string | undefined>('')
@@ -12,15 +12,15 @@ const App: React.FC = () => {
   const [typingSpeed, setTypingSpeed] = useState<number>()
   const textRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
-  
+
   const onChangeHandle = (e: React.ChangeEvent<HTMLInputElement> | undefined) =>
     setTyping(e?.target.value)
-  
+
   const checkTyping = (e: React.KeyboardEvent): void => {
     const txtList = !textRef.current
       ? undefined
-      : Array.from(textRef.current.children) as unknown as HTMLSpanElement[]
-    txtList?.forEach((span , index) => {
+      : (Array.from(textRef.current.children) as unknown as HTMLSpanElement[])
+    txtList?.forEach((span, index) => {
       if (
         e.getModifierState('Control') ||
         e.getModifierState('CapsLock') ||
@@ -28,7 +28,6 @@ const App: React.FC = () => {
         e.getModifierState('Alt') ||
         e.key === 'Enter'
       ) {
-
         return
       }
       if (span.innerHTML === e.key && index === typing?.length) {
@@ -50,7 +49,7 @@ const App: React.FC = () => {
       }
     })
   }
-  const timer = async (e:any) => {
+  const timer = async (e: any) => {
     e.target.parentNode.style.display = 'none'
     let end = 5
     setStartTimer(end)
@@ -105,8 +104,10 @@ const App: React.FC = () => {
       {displayTimer! > 0 && (
         <div className="displayTimer">計時 {displayTimer} 秒</div>
       )}
-      {startTimer! > 0 && <div className="startTimer">倒數 {startTimer} 秒</div>}
-        <InputLastDisplay typing={typing}/>
+      {startTimer! > 0 && (
+        <div className="startTimer">倒數 {startTimer} 秒</div>
+      )}
+      <InputLastDisplay typing={typing} />
 
       <div className="timer-group">
         <Button
