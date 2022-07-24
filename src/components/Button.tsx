@@ -15,5 +15,4 @@ const Button: FC<btn> = ({ content, btnClass, onClick, data }) => {
     </>
   )
 }
-
 export default Button

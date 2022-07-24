@@ -63,12 +63,12 @@ const App: React.FC = () => {
         inputRef.current?.removeAttribute('disabled')
         inputRef.current?.removeAttribute('placeholder')
         inputRef.current?.focus()
-        typingTimer(e.target.getAttribute('data-timer'))
+        typingTimer(e.target.dataset.timer)
       }
     }, 1000)
   }
   const typingTimer = async (t: number) => {
-    let end = t
+    let end = Number(t)
     const result = await new Promise((resolve) => {
       const currentSecond = setInterval(() => {
         setDisplayTimer((prev) => prev! - 1)
